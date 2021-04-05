@@ -1,4 +1,9 @@
 # react开发简书app
+## Header
+### 一行中前半部分左浮动，后半部分右浮动
+`float: left;`
+`float: right;`
+
 ## ⚠️注意事项
 ### 使用styled-components管理css
 css文件一旦在一个文件中引入后，全局都生效。但是这样会造成组件样式间的互相干扰。因此不建议在项目中直接引用css文件，建议使用一个第三方的模块**styled-components**。
