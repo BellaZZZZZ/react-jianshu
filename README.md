@@ -11,6 +11,7 @@
 ```
 ### box-sizing: border-box
 ### 使用 Iconfont 嵌入头部图标
+### float 浮动不占位置
 
 ## ⚠️注意事项
 ### 使用styled-components管理css
