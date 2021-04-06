@@ -21,6 +21,8 @@ export const Logo = styled.a`
 export const Nav = styled.div`
   width: 960px;
   height: 100%;
+  padding-right: 70px;
+  box-sizing: border-box; 
   margin: 0 auto;
 `;
 
@@ -38,6 +40,21 @@ export const NavItem = styled.div`
   }
   &.active {
     color: #ea6f5a;
+  }
+`;
+
+export const SearchWrapper = styled.div`
+  position: relative;
+  float: left;
+  .iconfont {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    background: grey;
   }
 `;
 
@@ -59,3 +76,28 @@ export const NavSearch = styled.input.attrs({
     color: #999;
   }
 `;
+
+export const Addition = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 56px;
+`;
+
+export const Button = styled.div`
+  float: right;
+  margin-top: 9px;
+  margin-right: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  border-radius: 19px;
+  border: 1px solid #ec6149;
+  font-size: 14px;
+  &.reg {
+    color: #ec6149;
+  }
+  &.writting {
+    color: #fff;
+    background: #ec6149;
+  }
+`

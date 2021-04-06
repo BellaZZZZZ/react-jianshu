@@ -10,6 +10,7 @@
 }
 ```
 ### box-sizing: border-box
+### 使用 Iconfont 嵌入头部图标
 
 ## ⚠️注意事项
 ### 使用styled-components管理css
