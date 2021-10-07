@@ -12,7 +12,7 @@
 ### box-sizing: border-box
 ### 使用 Iconfont 嵌入头部图标
 ### float 浮动不占位置
-
+### react-transition-group
 ## ⚠️注意事项
 ### 使用styled-components管理css
 css文件一旦在一个文件中引入后，全局都生效。但是这样会造成组件样式间的互相干扰。因此不建议在项目中直接引用css文件，建议使用一个第三方的模块**styled-components**。
