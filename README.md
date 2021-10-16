@@ -1,5 +1,6 @@
 # react开发简书app
 ## Header
+- 使用styled-components写css样式，使用reset.css使默认样式在所有浏览器做到统一
 ### 一行中前半部分左浮动，后半部分右浮动
 ```css
 .left {
