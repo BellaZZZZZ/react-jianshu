@@ -30,3 +30,4 @@ css文件一旦在一个文件中引入后，全局都生效。但是这样会�
   }
   ```
 - 全局使用iconfont（styled-components）
+- immutable对象的set方法，会结合之前immutable对象的值和设置的值，返回一个全新的对象
