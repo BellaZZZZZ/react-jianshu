@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './style.js';
+import { GlobalStyle } from './style';
+import { GlobalFontStyle } from './statics/iconfont/iconfont'
 
 ReactDOM.render(
-  <App/>,
+  <Fragment>
+    <GlobalStyle/>
+    <GlobalFontStyle/>
+    <App/>
+  </Fragment>,
   document.getElementById('root')
 )
 
