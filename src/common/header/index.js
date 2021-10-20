@@ -19,23 +19,48 @@ import {
 import { actionCreators } from './store';
 
 class Header extends Component {
-  getListArea (show) {
-    if (show) {
+  getListArea () {
+    const { 
+      focused, 
+      mouseIn, 
+      list, 
+      page, 
+      totalPage,
+      handleMouseEnter, 
+      handleMouseLeave, 
+      handleChangePage 
+    } = this.props;
+    const newList = list.toJS();
+    const pageList = [];
+    // ajax请求结束后再执行，之前报错是因为请求没结束，输出的都是undefined导致的key重复
+    if(newList.length){
+      for(let i=(page-1)*10; i < Math.min(page*10,newList.length); i++){
+        pageList.push(
+          <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+        )
+      }
+    }
+
+    if (focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo 
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => handleChangePage(page,totalPage, this.spinIcon)}>
+              <span 
+                ref={(icon) => {this.spinIcon = icon}}
+                className="iconfont spin"
+              >
+                &#xe851;
+              </span>
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>教育</SearchInfoItem>
+            {pageList}
           </SearchInfoList>
         </SearchInfo>
       )
@@ -70,11 +95,11 @@ class Header extends Component {
               
             </CSSTransition>
             <span 
-              className={focused ? "focused iconfont" : "iconfont"}
+              className={focused ? "focused iconfont zoom" : "iconfont zoom"}
             >
               &#xe637;
             </span>
-            {this.getListArea(focused)}
+            {this.getListArea()}
           </SearchWrapper>
           
         </Nav>
@@ -93,17 +118,42 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     // focused: state.get("header").get("focused")
-    focused: state.getIn(['header', 'focused'])
+    focused: state.getIn(['header', 'focused']),
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    list: state.getIn(['header', 'list']),
+    page: state.getIn(['header', 'page']),
+    totalPage: state.getIn(['header', 'totalPage']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
-  const { searchFocus, searchBlur } = actionCreators;
+  const { searchFocus, searchBlur, getList, mouseEnter, mouseLeave, changePageList } = actionCreators;
   return {
     handleInputFocus(){
+      dispatch(getList());
       dispatch(searchFocus());
     },
     handleInputBlur(){
       dispatch(searchBlur());
+    },
+    handleMouseEnter(){
+      dispatch(mouseEnter());
+    },
+    handleMouseLeave(){
+      dispatch(mouseLeave());
+    },
+    handleChangePage(page, totalPage, spin){
+      let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
+      if (originAngle) {
+        originAngle = parseInt(originAngle, 10);
+      } else {
+        originAngle = 0;
+      }
+      spin.style.transform = 'rotate(' + (originAngle + 360) + 'deg)';
+      if (page < totalPage) {
+        dispatch(changePageList(page + 1));
+      } else {
+        dispatch(changePageList(1));
+      }
     }
   }
 }
