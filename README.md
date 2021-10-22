@@ -39,6 +39,8 @@ css文件一旦在一个文件中引入后，全局都生效。但是这样会�
   ```
 ## react路由
 
+## 内层用了float所以外层要触发BFC使高度自适应
+
 - block才能用transform? why?
 ## 功能idea
 - 搜索历史
