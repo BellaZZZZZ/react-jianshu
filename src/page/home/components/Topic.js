@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Society from '../../../statics/society-news.jpeg';
+import { connect } from 'react-redux';
 import { 
   TopicWrapper,
   TopicItem,
@@ -9,13 +9,30 @@ class Topic extends Component {
   render() {
     return (
       <TopicWrapper>
-        <TopicItem>
-          <img className="item-img" src={Society}/>
-          社会热点
-        </TopicItem>
+        {
+          this.props.list.map((item) => {
+            return (
+              <TopicItem key={item.get("id")}>
+                <img 
+                  className="item-img" 
+                  src={item.get("imgUrl")}
+                  alt=""
+                />
+                {item.get("title")}
+              </TopicItem>
+            )
+          })
+        }
       </TopicWrapper>
     )
   }
 }
 
-export default Topic;
+const mapStateToProps = (state) => {
+  return {
+    // list: state.get('home').get('topicList')
+    list: state.getIn(['home', 'topicList'])
+  }
+};
+
+export default connect(mapStateToProps, null)(Topic);
