@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { RecommendWrapper, RecommendItem} from '../style';
-
+import DAILY from '../../../statics/banner-s-daily.png';
 
 class Recommend extends Component {
   render() {
+    const { list } = this.props;
     return (
       <RecommendWrapper>
-        <RecommendItem imgUrl="http://www.likeyunba.com/2.php?url=https://cdn2.jianshu.io/assets/web/banner-s-daily-e6f6601abc495573ad37f2532468186f.png">
-          1
-        </RecommendItem>
-        <RecommendItem imgUrl="https://cdn2.jianshu.io/assets/web/banner-s-daily-e6f6601abc495573ad37f2532468186f.png">
-          2
-        </RecommendItem>
+        {
+          list.map((item) => {
+            return <RecommendItem
+              imgUrl={item.get("imgUrl")}
+              key={item.get("id")}
+            ></RecommendItem>
+          })
+        }
       </RecommendWrapper>
     )
   }
 };
 
-export default Recommend;
+const mapStateToProps = (state) => {
+  return {
+    list: state.getIn(['home', 'recommendList'])
+  }
+}
+
+export default connect(mapStateToProps,null)(Recommend);
