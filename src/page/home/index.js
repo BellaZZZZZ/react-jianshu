@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import BFC from '../../statics/bfc.002.jpeg';
 import Topic from './components/Topic';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
+import { actionCreators } from './store';
 import { 
   HomeWrapper,
   HomeLeft,
@@ -26,6 +28,16 @@ class Home extends Component {
       </HomeWrapper>
     )
   }
+  componentDidMount() {
+    this.props.changeHomeData();
+  }
 }
 
-export default Home
+const mapDispatchToProps = (dispatch) => ({
+  changeHomeData() {
+    const action = actionCreators.getHomeInfo();
+    dispatch(action);
+  }
+});
+
+export default connect(null,mapDispatchToProps)(Home);

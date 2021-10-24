@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RecommendWrapper, RecommendItem} from '../style';
-import DAILY from '../../../statics/banner-s-daily.png';
 
 class Recommend extends Component {
   render() {

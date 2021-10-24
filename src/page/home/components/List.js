@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListItem, ListInfo } from '../style';
+import { ListItem, ListInfo, LoadMore } from '../style';
+import { actionCreators } from '../store';
 
 class List extends Component {
   render() {
-    const { list } = this.props
+    const { list, getMoreList } = this.props
     return (
       <div>
         {
@@ -24,6 +25,7 @@ class List extends Component {
             )
           })
         }
+        <LoadMore onClick={getMoreList}>阅读更多</LoadMore>
       </div>
       
     )
@@ -36,4 +38,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(List);
+const mapDsipatchToProps = (dispatch) => ({
+  getMoreList() {
+    const action = actionCreators.getList();
+    dispatch(action);
+  }
+  // 点击“阅读更多”重新获取ajax请求
+})
+
+export default connect(mapStateToProps, mapDsipatchToProps)(List);
