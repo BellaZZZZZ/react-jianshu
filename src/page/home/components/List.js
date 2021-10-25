@@ -5,13 +5,13 @@ import { actionCreators } from '../store';
 
 class List extends Component {
   render() {
-    const { list, getMoreList } = this.props
+    const { list, getMoreList, page } = this.props
     return (
       <div>
         {
-          list.map((item) => {
+          list.map((item, index) => {
             return (
-              <ListItem key={item.get("id")}>
+              <ListItem key={index}>
                 <img 
                   className="list-img"
                   src={item.get("imgUrl")}
@@ -25,7 +25,7 @@ class List extends Component {
             )
           })
         }
-        <LoadMore onClick={getMoreList}>阅读更多</LoadMore>
+        <LoadMore onClick={() => getMoreList(page)}>阅读更多</LoadMore>
       </div>
       
     )
@@ -34,13 +34,14 @@ class List extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(["home", "articleList"])
+    list: state.getIn(["home", "articleList"]),
+    page: state.getIn(["home", "articlePage"])
   }
 }
 
 const mapDsipatchToProps = (dispatch) => ({
-  getMoreList() {
-    const action = actionCreators.getList();
+  getMoreList(page) {
+    const action = actionCreators.getList(page);
     dispatch(action);
   }
   // 点击“阅读更多”重新获取ajax请求
