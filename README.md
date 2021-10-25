@@ -39,6 +39,12 @@ css文件一旦在一个文件中引入后，全局都生效。但是这样会�
   ```
 ## react路由
 
+## PureComponent
+react fiber
+内置shouldComponentUpdate
+之所以使用PureComponent是因为项目中使用了immutable.js来管理数据
+## 单页应用，整个网站在访问过程中只会加载一次html文件
+
 ## 内层用了float所以外层要触发BFC使高度自适应
 
 - block才能用transform? why?
