@@ -55,3 +55,7 @@ react fiber
 - 分页优化，可以参考[原生js实现分页组件开发（一）](https://blog.csdn.net/Charissa2017/article/details/104099398)
 - 微信小程序扫码登录
 - 博客中插入
+- 新消息通知推送 websocket
+- 浏览器缓存
+- 要搞个后台
+- 可以加一个抽奖
