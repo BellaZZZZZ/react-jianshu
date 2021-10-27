@@ -47,6 +47,9 @@ react fiber
 
 ## 内层用了float所以外层要触发BFC使高度自适应
 
+## 页面路由参数的传递
+- 动态路由获取参数
+
 - block才能用transform? why?
 ## 功能idea
 - 搜索历史
