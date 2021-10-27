@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { DetailWrapper, Header, Content } from './style';
+import { actionCreators, actionTypes } from './store';
 
 class Detail extends Component {
   render() {
     return (
       <DetailWrapper>
-        <Header>xlwings——Python for Excel可能是最全的xlwings入门攻略</Header>
-        <Content>
-          <img 
-            src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/879c3f1889374a3a9d138874e4a03f3a~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp?"
-            alt=""
-          />
-          <p>获取有数据的所有行数和列数</p>
-          <p>新建保存重命名表、插入删除行列、复制行列、批量写入数据</p>
-          <p>读取一整个sheet到pandas.DataFrame</p>
-          <p>保存与另存为</p>
-        </Content>
+        <Header>{this.props.title}</Header>
+        <Content 
+          dangerouslySetInnerHTML={{__html: this.props.content}}
+        />
       </DetailWrapper>
     )
   }
+  componentDidMount() {
+    this.props.getDetail();
+  }
 }
 
-export default Detail;
+const mapStateToProps = (state) => ({
+  title: state.getIn(['detail', 'title']),
+  content: state.getIn(['detail', 'content'])
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getDetail() {
+    dispatch(actionCreators.getDetail());
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

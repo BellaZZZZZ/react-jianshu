@@ -3,11 +3,16 @@ import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
   title: '',
-  content: '<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/879c3f1889374a3a9d138874e4a03f3a~tplv-k3u1fbpfcp-zoom-crop-mark:1304:1304:1304:734.awebp?" alt=""/><p>获取有数据的所有行数和列数</p><p>新建保存重命名表、插入删除行列、复制行列、批量写入数据</p><p>读取一整个sheet到pandas.DataFrame</p><p>保存与另存为</p>'
+  content: ''
 })
 
 export default (state = defaultState, action) => {
   switch(action.type) {
+    case actionTypes.CHANGE_DETAIL:
+      return state.merge({
+        title: action.title,
+        content: action.content
+      })
     default:
       return state;
   }
