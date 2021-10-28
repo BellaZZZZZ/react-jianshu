@@ -7,7 +7,7 @@ const changeHomeData = (result) => ({
   topicList: result.topicList,
   articleList: result.articleList,
   recommendList: result.recommendList
-})
+});
 
 export const getHomeInfo = () => {
   return (dispatch) => {
@@ -17,7 +17,7 @@ export const getHomeInfo = () => {
       dispatch(action);
     }) 
   }
-}
+};
 
 const addHomeList = (list, nextPage) => ({
   type: actionTypes.ADD_HOME_LIST,
@@ -36,9 +36,9 @@ export const getList = (page) => {
       console.log('error');
     })
   }
-}
+};
 
 export const toggleTopShow = (show) => ({
   type: actionTypes.TOGGLE_SCROLL_TOP,
   show
-})
+});

@@ -32,7 +32,6 @@ class Home extends PureComponent {
           ? <BackTop onClick={this.handleScrollTop}>回到顶部</BackTop>
           : null
         }
-        
       </HomeWrapper>
     )
   }
@@ -56,7 +55,7 @@ class Home extends PureComponent {
 
 const mapStateToProps = (state) => ({
   showScroll: state.getIn(['home', 'showScroll'])
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   changeHomeData() {
