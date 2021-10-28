@@ -50,7 +50,13 @@ react fiber
 ## 页面路由参数的传递
 - 动态路由获取参数
 
+## 异步加载组件
+要求打开首页只加载首页代码，打开登录页面只加载登录页面（和打包方式有关？
+react-loadable
+异步加载提升首屏速度
+bundle? chunk?
 - block才能用transform? why?
+
 ## 功能idea
 - 搜索历史
 - 添加骨架屏
@@ -64,3 +70,8 @@ react fiber
 - 可以加一个抽奖
 - 响应式布局，适配性
 - 账号密码缓存
+- 嵌套路由
+- 把styled-component 换成 css moudle
+- 懒加载用react.lazy和react.Suspense
+- react组件缓存
+- 后端 node websocket mysql

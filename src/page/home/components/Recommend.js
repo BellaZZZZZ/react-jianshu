@@ -10,8 +10,8 @@ class Recommend extends PureComponent {
         {
           list.map((item) => {
             return <RecommendItem
-              imgUrl={item.get("imgUrl")}
-              key={item.get("id")}
+              imgUrl={item.get('imgUrl')}
+              key={item.get('id')}
             ></RecommendItem>
           })
         }
@@ -24,6 +24,6 @@ const mapStateToProps = (state) => {
   return {
     list: state.getIn(['home', 'recommendList'])
   }
-}
+};
 
 export default connect(mapStateToProps,null)(Recommend);

@@ -16,12 +16,12 @@ class List extends PureComponent {
                 <ListItem>
                   <img 
                     className="list-img"
-                    src={item.get("imgUrl")}
+                    src={item.get('imgUrl')}
                     alt=""
                   />
                   <ListInfo>
-                    <h3 className="title">{item.get("title")}</h3>
-                    <p className="desc">{item.get("desc")}</p>
+                    <h3 className="title">{item.get('title')}</h3>
+                    <p className="desc">{item.get('desc')}</p>
                   </ListInfo>
                 </ListItem>
               </Link>
@@ -37,8 +37,8 @@ class List extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(["home", "articleList"]),
-    page: state.getIn(["home", "articlePage"])
+    list: state.getIn(['home', 'articleList']),
+    page: state.getIn(['home', 'articlePage'])
   }
 }
 

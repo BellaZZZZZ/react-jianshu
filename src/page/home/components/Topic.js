@@ -12,13 +12,13 @@ class Topic extends PureComponent {
         {
           this.props.list.map((item) => {
             return (
-              <TopicItem key={item.get("id")}>
+              <TopicItem key={item.get('id')}>
                 <img 
                   className="item-img" 
-                  src={item.get("imgUrl")}
+                  src={item.get('imgUrl')}
                   alt=""
                 />
-                {item.get("title")}
+                {item.get('title')}
               </TopicItem>
             )
           })

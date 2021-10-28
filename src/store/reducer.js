@@ -9,4 +9,4 @@ export default combineReducers({
   home: homeReducer,
   detail: detailReducer,
   login: loginReducer,
-})
+});
